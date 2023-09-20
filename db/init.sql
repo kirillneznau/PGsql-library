@@ -1,45 +1,35 @@
-CREATE TABLE IF NOT EXISTS publishers
-(
+CREATE TABLE IF NOT EXISTS publishers(
     Id SERIAL PRIMARY KEY,
-    Name CHARACTER VARYING(30),
-    City CHARACTER VARYING(30)
+    Name VARCHAR(30),
+    City VARCHAR(30)
 );
-
-CREATE TABLE IF NOT EXISTS readers
-(
+CREATE TABLE IF NOT EXISTS readers (
     Id SERIAL PRIMARY KEY,
-    CardNumber CHARACTER VARYING(30),
-    FullNameReader CHARACTER VARYING(30),
-    Adress CHARACTER VARYING(30),
-    Contact CHARACTER VARYING(30),
+    CardNumber VARCHAR(30),
+    FullNameReader VARCHAR(30),
+    Adress VARCHAR(30),
+    Contact VARCHAR(30)
 );
-
-CREATE TABLE IF NOT EXISTS books
-(
+CREATE TABLE IF NOT EXISTS books (
     Id SERIAL PRIMARY KEY,
-    Title CHARACTER VARYING(30),
-    Chipher CHARACTER VARYING(30),
-    YearOfPublic CHARACTER VARYING(30),
+    Title VARCHAR(30),
+    Chipher VARCHAR(30),
+    YearOfPublic VARCHAR(30),
     NumberOfPages INTEGER,
-    Price CHARACTER VARYING(30),
+    Price VARCHAR(30),
     NumberOfCopy INTEGER,
     Id_publisher INTEGER REFERENCES publishers (Id)
 );
-
-CREATE TABLE IF NOT EXISTS given_books
-(
+CREATE TABLE IF NOT EXISTS given_books (
     Id SERIAL PRIMARY KEY,
     Id_readers INTEGER REFERENCES readers (Id),
     Id_books INTEGER REFERENCES books (Id)
 );
-
-CREATE TABLE IF NOT EXISTS authors
-(
+CREATE TABLE IF NOT EXISTS authors (
     Id SERIAL PRIMARY KEY,
-    FullNameAuthor CHARACTER VARYING(30)
+    FullNameAuthor VARCHAR(30)
 );
-CREATE TABLE IF NOT EXISTS authors_books
-(
+CREATE TABLE IF NOT EXISTS authors_books (
     Id SERIAL PRIMARY KEY,
     Id_authors INTEGER REFERENCES authors (Id),
     Id_books INTEGER REFERENCES books (Id)
